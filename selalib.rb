@@ -1,4 +1,4 @@
-class SeLaLib < Formula
+class Selalib < Formula
   desc "Semi-lagrangian library"
   homepage "http://selalib.gforge.inria.fr"
   url "https://gitlab.mpcdf.mpg.de/clapp/selalib.git"
