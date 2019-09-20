@@ -7,6 +7,7 @@ class Xlifepp < Formula
 
   depends_on "cmake" => :build
   depends_on "suite-sparse"
+  depends_on "gmsh"
   
   env :std
   
