@@ -4,7 +4,7 @@ class Hdf5Parallel < Formula
   url "https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.5/src/hdf5-1.10.5.tar.bz2"
   sha256 "68d6ea8843d2a106ec6a7828564c1689c7a85714a35d8efafa2fee20ca366f44"
 
-  keg_only "it conflicts with hdf5 package. This version is built with fortran not c++""
+  keg_only "it conflicts with hdf5 package. This version is built with fortran not c++"
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
