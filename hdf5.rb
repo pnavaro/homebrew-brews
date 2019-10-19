@@ -1,20 +1,10 @@
 class Hdf5 < Formula
   desc "File format designed to store large amounts of data"
   homepage "https://www.hdfgroup.org/HDF5"
-  url "https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.4/src/hdf5-1.10.4.tar.bz2"
-  sha256 "1267ff06aaedc04ca25f7c6026687ea2884b837043431195f153401d942b28df"
+  url "https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.5/src/hdf5-1.10.5.tar.bz2"
+  sha256 "68d6ea8843d2a106ec6a7828564c1689c7a85714a35d8efafa2fee20ca366f44"
   
   keg_only "conflicts with hdf5 package. This version is built with fortran not c++"
-
-  bottle do
-    sha256 "ac1b242a49c884c9572c95089f589243637dab9992f11f120218f7e9c1207e13" => :mojave
-    sha256 "207bb10e9ee432b9e3e71790b2be25efb4fa57a95a30d2a47997ad460d3ae7d7" => :high_sierra
-    sha256 "34af9edb3db5e46887106f70a7f6c7c3e4988c135e739089f5f13e0960edee3a" => :sierra
-  end
-
-  option "with-mpi", "Enable parallel support"
-
-  deprecated_option "enable-parallel" => "with-mpi"
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
@@ -40,19 +30,13 @@ class Hdf5 < Formula
       --enable-fortran
     ]
 
-    if build.without?("mpi")
-      args << "--enable-cxx"
-    else
-      args << "--disable-cxx"
-    end
+    args << "--disable-cxx"
 
-    if build.with? "mpi"
-      ENV["CC"] = "mpicc"
-      ENV["CXX"] = "mpicxx"
-      ENV["FC"] = "mpif90"
+    ENV["CC"] = "mpicc"
+    ENV["CXX"] = "mpicxx"
+    ENV["FC"] = "mpif90"
 
-      args << "--enable-parallel"
-    end
+    args << "--enable-parallel"
 
     system "./configure", *args
     system "make", "install"
